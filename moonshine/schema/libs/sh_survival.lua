@@ -68,13 +68,23 @@ hook.Add("PlayerSpawn", "SurvivalInit", function(client)
     end
 
     local character = client:GetCharacter()
-    if character and istable(character) and character.SetData then
-        character:SetData("hunger", 100)
-        character:SetData("thirst", 100)
-        character:SetData("fatigue", 0)
-        print("SurvivalInit: Initialized for", client:SteamID())
-    else
+    if not character or not istable(character) or not character.SetData then
         print("SurvivalInit: No valid character for", client:SteamID(), "Character:", character)
+        return
+    end
+
+    -- Only set defaults if values are not already set
+    if character:GetData("hunger") == nil then
+        character:SetData("hunger", 100)
+        print("SurvivalInit: Set default hunger=100 for", client:SteamID())
+    end
+    if character:GetData("thirst") == nil then
+        character:SetData("thirst", 100)
+        print("SurvivalInit: Set default thirst=100 for", client:SteamID())
+    end
+    if character:GetData("fatigue") == nil then
+        character:SetData("fatigue", 0)
+        print("SurvivalInit: Set default fatigue=0 for", client:SteamID())
     end
 end)
 
