@@ -1,0 +1,8 @@
+
+"moonshine"
+{
+	"base" 			"helix"
+	"title" 		"Moonshine RP"
+	"author" 		"pie"
+	"menusystem"	"1"
+}
