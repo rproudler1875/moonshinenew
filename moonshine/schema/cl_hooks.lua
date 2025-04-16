@@ -49,7 +49,6 @@ function Schema:CreateBars()
             return 0
         end
         local value = character:GetData("hunger", 100) / 100
-        print("Hunger bar value:", value)
         return value
     end, Color(200, 100, 50), 4, "hunger")
 
@@ -61,7 +60,6 @@ function Schema:CreateBars()
             return 0
         end
         local value = character:GetData("thirst", 100) / 100
-        print("Thirst bar value:", value)
         return value
     end, Color(50, 100, 200), 5, "thirst")
 
@@ -73,7 +71,6 @@ function Schema:CreateBars()
             return 0
         end
         local value = character:GetData("fatigue", 0) / 100
-        print("Fatigue bar value:", value)
         return value
     end, Color(100, 50, 100), 6, "fatigue")
 end

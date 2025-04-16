@@ -1,9 +1,7 @@
-
--- You can define additional "sub-factions" called classes. These provide a way to differentate different types of characters
--- that still belong to the same class. Much of the same concepts from factions apply to classes.
-
 CLASS.name = "Police Recruit"
-CLASS.faction = FACTION_POLICE
+CLASS.faction = FACTION_GOVERNMENT
+CLASS.description = "A new member of the police force, learning the ropes of law enforcement."
 CLASS.isDefault = true
+CLASS.pay = 10
 
 CLASS_POLICERECRUIT = CLASS.index

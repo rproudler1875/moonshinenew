@@ -1,7 +1,7 @@
 local CHAR = ix.meta.character
 
-function CHAR:IsPolice()
-    return self:GetFaction() == FACTION_POLICE
+function CHAR:IsGovernment()
+    return self:GetFaction() == FACTION_GOVERNMENT
 end
 
 function CHAR:GetHunger()
