@@ -1,5 +1,9 @@
 function Schema:CharacterLoaded(character)
     self:ExampleFunction("@serverWelcome", character:GetName())
+
+    -- Re-add bars when character loads to ensure they appear
+    print("Re-adding survival bars on character load")
+    self:CreateBars()
 end
 
 function Schema:CreateMenuButtons(tabs)
@@ -33,32 +37,49 @@ function Schema:CreateMenuButtons(tabs)
     end
 end
 
--- Add hunger, thirst, and fatigue bars
+-- Add hunger, thirst, and fatigue bars below health, armor, and stamina
 function Schema:CreateBars()
+    print("Creating survival bars")
+
     -- Hunger bar
     ix.bar.Add(function()
         local character = LocalPlayer():GetCharacter()
         if not character then
+            print("No character for hunger bar")
             return 0
         end
-        return character:GetData("hunger", 100) / 100
+        local value = character:GetData("hunger", 100) / 100
+        print("Hunger bar value:", value)
+        return value
     end, Color(200, 100, 50), 4, "hunger")
 
     -- Thirst bar
     ix.bar.Add(function()
         local character = LocalPlayer():GetCharacter()
         if not character then
+            print("No character for thirst bar")
             return 0
         end
-        return character:GetData("thirst", 100) / 100
+        local value = character:GetData("thirst", 100) / 100
+        print("Thirst bar value:", value)
+        return value
     end, Color(50, 100, 200), 5, "thirst")
 
     -- Fatigue bar
     ix.bar.Add(function()
         local character = LocalPlayer():GetCharacter()
         if not character then
+            print("No character for fatigue bar")
             return 0
         end
-        return character:GetData("fatigue", 0) / 100
+        local value = character:GetData("fatigue", 0) / 100
+        print("Fatigue bar value:", value)
+        return value
     end, Color(100, 50, 100), 6, "fatigue")
 end
+
+-- Initialize bars after gamemode loads
+hook.Add("PostGamemodeLoaded", "MoonshineCreateBars", function()
+    print("PostGamemodeLoaded: Initializing survival bars")
+    Schema:CreateBars()
+end)
