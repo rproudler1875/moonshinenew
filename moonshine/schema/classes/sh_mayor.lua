@@ -1,5 +1,5 @@
 CLASS.name = "Mayor"
-CLASS.faction = FACTION_GOVERNMENT
+CLASS.faction = FACTION_CITIZEN
 CLASS.description = "The elected leader of the city, responsible for policy and administration."
 CLASS.model = "models/breen.mdl"
 function CLASS:OnCanBe(client)
@@ -17,5 +17,4 @@ function CLASS:OnCanBe(client)
     return true
 end
 CLASS.pay = 30
-
 CLASS_MAYOR = CLASS.index
