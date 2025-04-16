@@ -32,3 +32,33 @@ function Schema:CreateMenuButtons(tabs)
         panel:AddPanel(craftPanel)
     end
 end
+
+-- Add hunger, thirst, and fatigue bars
+function Schema:CreateBars()
+    -- Hunger bar
+    ix.bar.Add(function()
+        local character = LocalPlayer():GetCharacter()
+        if not character then
+            return 0
+        end
+        return character:GetData("hunger", 100) / 100
+    end, Color(200, 100, 50), 4, "hunger")
+
+    -- Thirst bar
+    ix.bar.Add(function()
+        local character = LocalPlayer():GetCharacter()
+        if not character then
+            return 0
+        end
+        return character:GetData("thirst", 100) / 100
+    end, Color(50, 100, 200), 5, "thirst")
+
+    -- Fatigue bar
+    ix.bar.Add(function()
+        local character = LocalPlayer():GetCharacter()
+        if not character then
+            return 0
+        end
+        return character:GetData("fatigue", 0) / 100
+    end, Color(100, 50, 100), 6, "fatigue")
+end

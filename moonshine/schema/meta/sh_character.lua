@@ -27,11 +27,3 @@ end
 function CHAR:SetFatigue(value)
     self:SetData("fatigue", value)
 end
-
-function CHAR:GetTemperature()
-    return self:GetAttribute("Temperature", 50)
-end
-
-function CHAR:SetTemperature(value)
-    self:SetAttribute("Temperature", value)
-end
